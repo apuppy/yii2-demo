@@ -33,8 +33,11 @@ return [
                 ],
             ],
         ],
-        'errorHandler' => [
+        /*'errorHandler' => [
             'errorAction' => 'site/error',
+        ],*/
+        'errorHandler' => [
+            'errorAction' => 'error/error',
         ],
         /*
         'urlManager' => [

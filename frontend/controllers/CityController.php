@@ -18,7 +18,6 @@ class CityController extends BaseController
         return $this->render('city-list', [
             'city_list' => $counties,
         ]);
-
     }
 
 }
