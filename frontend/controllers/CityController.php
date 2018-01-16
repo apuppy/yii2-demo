@@ -19,5 +19,4 @@ class CityController extends BaseController
             'city_list' => $counties,
         ]);
     }
-
 }
