@@ -7,6 +7,7 @@ use common\components\Helper;
 use common\controllers\frontend\BaseController;
 use Elasticsearch\ClientBuilder;
 use Yii;
+use yii\helpers\VarDumper;
 
 class TestController extends BaseController
 {
