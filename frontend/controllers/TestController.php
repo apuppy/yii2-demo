@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use app\models\District;
+use app\models\People;
 use common\components\Helper;
 use common\controllers\frontend\BaseController;
 use Elasticsearch\ClientBuilder;
@@ -38,9 +39,32 @@ class TestController extends BaseController
         var_dump($client);
     }
 
-    public function actionTestSave()
+    /**
+     * 测试AR的afterSave事件
+     */
+    public function actionAfterSave()
     {
+        $people = new People();
+        $people->name = 'lala';
+        $people->sex = 0;
+        $people->age = 24;
+        $people->save(0);
+    }
 
+    /**
+     * 测试AR的afterFind事件
+     */
+    public function actionAfterFind()
+    {
+        People::find()->one();
+    }
+
+    /**
+     * 测试AR的afterDelete事件
+     */
+    public function actionAfterDelete()
+    {
+        People::find()->one()->delete();
     }
 
 }
