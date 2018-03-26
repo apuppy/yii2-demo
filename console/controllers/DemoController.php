@@ -1,0 +1,65 @@
+<?php
+
+namespace console\controllers;
+
+use yii\console\Controller;
+use yii\console\ExitCode;
+use yii\helpers\Console;
+
+class DemoController extends Controller
+{
+    /****** options 方法限定参数 ******/
+    public $user_name;
+    public $operate_action;
+    public $uid;
+
+    public function options($actionID)
+    {
+        return ['user_name','operate_action','uid'];
+    }
+
+    public function actionIndex()
+    {
+        $this->stdout("demo console \n");
+    }
+
+    /**
+     * options 方法限定参数
+     */
+    public function actionShowOptions()
+    {
+        var_dump($this->user_name);
+        var_dump($this->operate_action);
+        var_dump($this->uid);
+    }
+
+    /**
+     * mixed params
+     * @param $name
+     * @param $value
+     * @param array $extra_params
+     */
+    public function actionShowCustomParams($name,$value,array $extra_params)
+    {
+        var_dump($name);
+        var_dump($value);
+        var_dump($extra_params);
+    }
+
+    /**
+     * @return int
+     */
+    public function actionTricks()
+    {
+        // strong the output
+        $this->stdout("Hello \n");
+        $this->stdout("more strong \n", Console::BOLD);
+
+        $name = $this->ansiFormat('Alex', Console::FG_RED);
+        $this->stdout("Hello, my name is $name. \n");
+
+        // return status code ExitCode::OK && ExitCode::UNSPECIFIED_ERROR
+        return ExitCode::UNSPECIFIED_ERROR;
+    }
+
+}

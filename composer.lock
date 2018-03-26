@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6fb47097a1b90880da36bfea31120cee",
+    "content-hash": "60f78b3d0f17510c4fd25de5d5e92cfd",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -417,16 +417,16 @@
         },
         {
             "name": "elasticsearch/elasticsearch",
-            "version": "v2.0.0",
+            "version": "v2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/elastic/elasticsearch-php.git",
-                "reference": "e9b6963dbb2864d33bf3c76df022a077c2cbda82"
+                "reference": "c57db9da04f4c54c2ca69a52bc618d9120b96d4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/elastic/elasticsearch-php/e9b6963dbb2864d33bf3c76df022a077c2cbda82.zip",
-                "reference": "e9b6963dbb2864d33bf3c76df022a077c2cbda82",
+                "url": "https://files.phpcomposer.com/files/elastic/elasticsearch-php/c57db9da04f4c54c2ca69a52bc618d9120b96d4d.zip",
+                "reference": "c57db9da04f4c54c2ca69a52bc618d9120b96d4d",
                 "shasum": ""
             },
             "require": {
@@ -435,10 +435,10 @@
                 "psr/log": "~1.0"
             },
             "require-dev": {
-                "athletic/athletic": "~0.1",
                 "cpliakas/git-wrapper": "~1.0",
-                "mockery/mockery": "dev-master@dev",
-                "phpunit/phpunit": "3.7.*",
+                "mockery/mockery": "0.9.4",
+                "phpunit/phpunit": "~4.7",
+                "sami/sami": "~3.2",
                 "symfony/yaml": "2.4.3 as 2.4.2",
                 "twig/twig": "1.*"
             },
@@ -454,7 +454,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "Apache 2"
+                "Apache-2.0"
             ],
             "authors": [
                 {
@@ -467,7 +467,7 @@
                 "elasticsearch",
                 "search"
             ],
-            "time": "2015-08-28T19:01:19+00:00"
+            "time": "2017-12-05T14:05:24+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
