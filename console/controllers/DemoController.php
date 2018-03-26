@@ -34,6 +34,7 @@ class DemoController extends Controller
     }
 
     /**
+     * 用户自定义变量
      * mixed params
      * @param $name
      * @param $value
@@ -47,6 +48,7 @@ class DemoController extends Controller
     }
 
     /**
+     * 字体、颜色、格式
      * @return int
      */
     public function actionTricks()
@@ -63,6 +65,7 @@ class DemoController extends Controller
     }
 
     /**
+     * 命令行交互
      * interactive command line
      * @return int
      */

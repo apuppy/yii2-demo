@@ -1,1 +1,12 @@
 create database yii2demo;
+
+CREATE TABLE user (
+  id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name varchar(16) NOT NULL DEFAULT '' COMMENT '姓名',
+  sex TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '性别 0:未知 1：男 2：女',
+  age TINYINT(3) UNSIGNED NOT NULL DEFAULT 0 COMMENT '年龄',
+  birthday DATE NOT NULL DEFAULT '0000-00-00' COMMENT '生日',
+  tel CHAR(15) NOT NULL DEFAULT '' COMMENT '电话号码',
+  created_at DATETIME NOT NULL DEFAULT current_timestamp(),
+  updated_at DATETIME NOT NULL DEFAULT current_timestamp()
+) ENGINE = InnoDB DEFAULT CHARSET = utf8 COMMENT '用户表';

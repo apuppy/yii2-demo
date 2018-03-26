@@ -30,4 +30,32 @@ class Helper
         file_put_contents($log_file,$str_var,FILE_APPEND);
     }
 
+    /**
+     * 获取当前"年-月-日 时:分:秒"
+     * @param null $timestamp
+     * @return string
+     */
+    public static function current_datetime($timestamp = null)
+    {
+        $dt = new \DateTime();
+        if( !empty($timestamp) ){
+            $dt->setTimestamp($timestamp);
+        }
+        return $dt->format('Y-m-d H:i:s');
+    }
+
+    /**
+     * 获取当前"年-月-日"
+     * @param null $timestamp
+     * @return string
+     */
+    public static function current_date($timestamp = null)
+    {
+        $dt = new \DateTime();
+        if( !empty($timestamp) ){
+            $dt->setTimestamp($timestamp);
+        }
+        return $dt->format('Y-m-d');
+    }
+
 }
