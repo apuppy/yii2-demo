@@ -62,4 +62,23 @@ class DemoController extends Controller
         return ExitCode::UNSPECIFIED_ERROR;
     }
 
+    /**
+     * interactive command line
+     * @return int
+     */
+    public function actionInteractiveOperate()
+    {
+        // confirm
+        if ($this->confirm("Are you sure?")) {
+            echo "user typed yes\n";
+        } else {
+            echo "user typed no\n";
+        }
+        // standard and error output
+        $this->stdout("black hole \n");
+
+        $this->stderr("no completed \n");
+        return ExitCode::UNSPECIFIED_ERROR;
+    }
+
 }
