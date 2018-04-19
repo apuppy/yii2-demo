@@ -80,4 +80,81 @@ class EsController extends Controller
         */
 
     }
+
+    public function actionIndexManage()
+    {
+        // create an index
+        $client = ClientBuilder::create()->build();
+        $params = [
+            'index' => 'my_index'
+        ];
+        // $response = $client->indices()->create($params);
+
+
+        // delete an index
+        $params = ['index' => 'my_index_test'];
+        // $response = $client->indices()->delete($params);
+
+        // put setting API
+        $params = [
+            'index' => 'my_index',
+            'body' => [
+                'settings' => [
+                    'number_of_replicas' => 0,
+                    'refresh_interval' => -1
+                ]
+            ]
+        ];
+        // $response = $client->indices()->putSettings($params);
+
+
+        // get settings of one index
+        $params = ['index' => 'my_index'];
+        // $response = $client->indices()->getSettings();
+
+        // put mappings API
+        $params = [
+            'index' => 'my_index',
+            'type' => 'my_type',
+            'body' => [
+                'my_type' => [
+                    '_source' => [
+                        'enabled' => true
+                    ],
+                    'properties' => [
+                        'first_name' => [
+                            'type' => 'string',
+                            'analyzer' => 'standard'
+                        ],
+                        'age' => [
+                            'type' => 'integer'
+                        ]
+                    ]
+                ]
+            ]
+        ];
+        // update index mapping
+        // $response = $client->indices()->putMapping($params);
+
+        // get mappings API
+
+        // get mappings for all indexes and types
+        $response = $client->indices()->getMapping();
+        // get mappings for all types in 'my_index'
+        $params = ['index' => 'my_index'];
+        $response = $client->indices()->getMapping($params);
+        // get mappings for all types of 'my_type', regardless of index
+        $params = ['type' => 'my_type'];
+        $response = $client->indices()->getMapping($params);
+        // get mapping 'my_type' in 'my_index'
+        $params = [
+            'index' => 'my_index',
+            'type' => 'my_type'
+        ];
+        $response = $client->indices()->getMapping($params);
+
+        // other APIs in the incices namespace
+        // $client->incices()->
+    }
+
 }
