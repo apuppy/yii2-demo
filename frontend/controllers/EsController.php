@@ -195,7 +195,54 @@ class EsController extends Controller
         ];
         $response = $client->index($params);
 
+        $params = [];
         /****** bulk indexing ******/
+        for($i = 0; $i < 100; $i++){
+            $params['body'][] = [
+                'index' => [
+                    '_index' => 'my_index',
+                    '_type' => 'my_type',
+                ]
+            ];
+            $params['body'][] = [
+                'my_field' => 'my_value',
+                'second_field' => 'some more values'
+            ];
+        }
+        $response = $client->bulk($params);
+
+        // more document batch index
+        $params = ['body' => []];
+        for($i = 1; $i < 12345; $i++){
+
+            $params['body'][] = [
+                'index' => [
+                    '_index' => 'my_index',
+                    '_type' => 'my_type',
+                    '_id' => $i
+                ]
+            ];
+
+            $params['body'][] = [
+                'my_field' => 'my_value',
+                'second_field' => 'some more values'
+            ];
+
+            // every 1000 documents stop and send the bulk request
+            if($i % 1000 === 0){
+                $bulk_response = $client->bulk($params);
+                // erase the old buld params
+                $params = ['body' => []];
+                // unset the bulk response
+                unset($bulk_response);
+            }
+        }
+
+        //send the last batch if it exists
+        if( !empty($params['body']) ){
+            $bulk_response = $client->bulk($params);
+        }
+
     }
 
 }

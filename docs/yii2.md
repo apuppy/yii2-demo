@@ -17,3 +17,5 @@ php yii migrate/up
 ```bash
 php yii migrate/down
 ```
+#### 集成workman常用demo
+#### phpunit
