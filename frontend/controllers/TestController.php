@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use app\models\District;
 use app\models\People;
 use common\components\Helper;
+use common\components\RedisLock;
 use common\controllers\frontend\BaseController;
 use Elasticsearch\ClientBuilder;
 use Yii;
@@ -65,6 +66,38 @@ class TestController extends BaseController
     public function actionAfterDelete()
     {
         People::find()->one()->delete();
+    }
+
+    /**
+     * redis锁简单实现
+     */
+    public function actionRedis_lock()
+    {
+        $config = [
+            'host' => 'localhost',
+            'port' => 6379,
+            'index' => 0,
+            'auth' => '',
+            'timeout' => 1,
+            'reserved' => NULL,
+            'retry_interval' => 100,
+        ];
+
+        // redis lock instance
+        $oRedisLock = new RedisLock($config);
+        // redis lock key
+        $key = 'test_lock';
+
+        // get redis lock
+        $is_lock = $oRedisLock->lock($key, 10);
+        if($is_lock){
+            // get lock success
+            // do something here
+            // unlock
+            $oRedisLock->unlock($key);
+        } else {
+            // limit request frequence
+        }
     }
 
 }
