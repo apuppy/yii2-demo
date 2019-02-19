@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package helloworld;
+
+service Greeter {
+    // say hi
+    rpc SayHi (HiRequest) returns (HiReply) {}
+    // say hello
+    rpc SayHello (HelloRequest) returns (HelloReply) {}
+}
+
+message HiRequest {
+    string name = 1;
+}
+
+message HiReply {
+    string message = 1;
+}
+
+message HelloRequest {
+    string name = 1;
+}
+
+message HelloReply {
+    string message = 1;
+}
+
+// 写 helloworld.proto
+
+// 生成php代码：执行helloworld.sh，生成的文件在../grpc/GPBMetadata和../grpc/Helloworld
+
+// nodejs服务端:进入node目录，执行npm install,进入application目录；运行服务端:node greet_server.js
+
+// php客户端：\frontend\controllers\ProtoController::actionIndex
+
+// 验证：浏览器访问http://localhost/yii2-demo/frontend/web/index.php?r=proto/index，http://localhost/yii2-demo/frontend/web/index.php?r=proto/hello
