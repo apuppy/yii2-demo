@@ -9,7 +9,7 @@ create table `district` (
 	`suffix` varchar (15),
 	`code` char (30),
 	`order` tinyint (2)
-); 
+)engine=InnoDB default charset = utf8;
 insert into `district` (`id`, `name`, `parent_id`, `initial`, `initials`, `pinyin`, `suffix`, `code`, `order`) values('1','北京','0','b','bj','beijing','市','110000','1');
 insert into `district` (`id`, `name`, `parent_id`, `initial`, `initials`, `pinyin`, `suffix`, `code`, `order`) values('2','天津','0','t','tj','tianjin','市','120000','2');
 insert into `district` (`id`, `name`, `parent_id`, `initial`, `initials`, `pinyin`, `suffix`, `code`, `order`) values('3','上海','0','s','sh','shanghai','市','310000','3');
