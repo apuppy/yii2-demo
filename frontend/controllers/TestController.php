@@ -9,7 +9,6 @@ use common\components\RedisLock;
 use common\controllers\frontend\BaseController;
 use Elasticsearch\ClientBuilder;
 use Yii;
-use yii\helpers\VarDumper;
 
 class TestController extends BaseController
 {
@@ -98,6 +97,16 @@ class TestController extends BaseController
         } else {
             // limit request frequence
         }
+    }
+
+    /**
+     * 测试\common\logging\RabbitmqTarget
+     */
+    public function actionLog()
+    {
+        $message = "write some message to test rabbitmq-server log target";
+        Yii::info($message);
+        exit;
     }
 
 }
