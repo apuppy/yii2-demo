@@ -2,6 +2,8 @@
 
 namespace console\controllers;
 
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
 use yii\console\Controller;
 use yii\console\ExitCode;
 use yii\helpers\Console;
@@ -15,7 +17,7 @@ class DemoController extends Controller
 
     public function options($actionID)
     {
-        return ['user_name','operate_action','uid'];
+        return ['user_name', 'operate_action', 'uid'];
     }
 
     public function actionIndex()
@@ -40,7 +42,7 @@ class DemoController extends Controller
      * @param $value
      * @param array $extra_params
      */
-    public function actionShowCustomParams($name,$value,array $extra_params)
+    public function actionShowCustomParams($name, $value, array $extra_params)
     {
         var_dump($name);
         var_dump($value);
@@ -82,6 +84,41 @@ class DemoController extends Controller
 
         $this->stderr("no completed \n");
         return ExitCode::UNSPECIFIED_ERROR;
+    }
+
+    public function actionQueueSend()
+    {
+        $connection = new AMQPStreamConnection('192.168.33.22', 5672, 'demo', 'demo123');
+        $channel = $connection->channel();
+        $channel->queue_declare('hello', false, false, false, false);
+        $msg = new AMQPMessage('Hello World!');
+        $channel->basic_publish($msg, '', 'hello');
+        echo " [x] Sent 'Hello World!'\n";
+        $channel->close();
+        $connection->close();
+        //var_dump($channel);
+        exit;
+    }
+
+    public function actionQueueReceive()
+    {
+        $connection = new AMQPStreamConnection('192.168.33.22', 5672, 'demo', 'demo123');
+        $channel = $connection->channel();
+
+        $channel->queue_declare('hello', false, false, false, false);
+
+        echo " [*] Waiting for messages. To exit press CTRL+C\n";
+
+        $callback = function ($msg) {
+            echo ' [x] Received ', $msg->body, "\n";
+        };
+
+        $channel->basic_consume('hello', '', false, true, false, false, $callback);
+
+        while ($channel->is_consuming()) {
+            $channel->wait();
+        }
+
     }
 
 }
