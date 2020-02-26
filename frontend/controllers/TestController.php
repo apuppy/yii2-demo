@@ -8,6 +8,7 @@ use common\components\Helper;
 use common\components\RedisLock;
 use common\controllers\frontend\BaseController;
 use Elasticsearch\ClientBuilder;
+use Sentry;
 use Yii;
 
 class TestController extends BaseController
@@ -107,6 +108,16 @@ class TestController extends BaseController
         $message = "write some message to test rabbitmq-server log target";
         Yii::info($message);
         exit;
+    }
+
+    /**
+     * 测试sentry
+     * @throws \Exception
+     */
+    public function actionSentry()
+    {
+        Sentry\init(['dsn' => 'http://0558f208d2c44cc8ad22c4b342e7f422@sentry.yuzhua-dev.com/3' ]);
+        throw new \Exception("yii2 framework error to sentry!");
     }
 
 }
