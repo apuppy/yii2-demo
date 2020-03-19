@@ -23,7 +23,8 @@
         "php-amqplib/php-amqplib": ">=2.9.0",
         "ext-json": "*",
         "sentry/sdk": "2.1.0",
-        "elasticsearch/elasticsearch": "^7.6"
+        "elasticsearch/elasticsearch": "^7.6",
+        "react/http": "^0.8.6"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
