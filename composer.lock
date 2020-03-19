@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4509d4323f342adb305e4684e021d3d8",
+    "content-hash": "0ede5935f2f7c60f20414a5ee10c41b1",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -2209,6 +2209,48 @@
                 "timer"
             ],
             "time": "2019-03-27T18:10:32+00:00"
+        },
+        {
+            "name": "react/react",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/reactphp.git",
+                "reference": "f11a13b09febb6676febd1f8f70befd0593bffb7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/reactphp/zipball/f11a13b09febb6676febd1f8f70befd0593bffb7",
+                "reference": "f11a13b09febb6676febd1f8f70befd0593bffb7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.8",
+                "react/cache": "^1.0",
+                "react/dns": "^1.0",
+                "react/event-loop": "^1.0",
+                "react/promise": "^2.1 || ^1.2",
+                "react/promise-stream": "^1.1.1",
+                "react/socket": "^1.0",
+                "react/stream": "^1.0"
+            },
+            "require-dev": {
+                "clue/block-react": "^1.1",
+                "clue/stream-filter": "^1.3",
+                "phpunit/phpunit": "^5.7 || ^4.8.35"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "ReactPHP: Event-driven, non-blocking I/O with PHP.",
+            "keywords": [
+                "asynchronous",
+                "reactor",
+                "reactphp"
+            ],
+            "time": "2019-07-11T15:59:40+00:00"
         },
         {
             "name": "react/socket",

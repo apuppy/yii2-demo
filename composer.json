@@ -24,7 +24,8 @@
         "ext-json": "*",
         "sentry/sdk": "2.1.0",
         "elasticsearch/elasticsearch": "^7.6",
-        "react/http": "^0.8.6"
+        "react/http": "^0.8.6",
+        "react/react": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
