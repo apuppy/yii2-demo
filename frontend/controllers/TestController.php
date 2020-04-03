@@ -7,6 +7,7 @@ use app\models\People;
 use common\components\Helper;
 use common\components\RedisLock;
 use common\controllers\frontend\BaseController;
+use common\DB\Demo\User;
 use Elasticsearch\ClientBuilder;
 use Sentry;
 use Yii;
@@ -29,7 +30,7 @@ class TestController extends BaseController
     {
         $top3 = District::find()->orderBy(['id' => 'desc'])->limit(3)->indexBy('id')->all();
         $end3 = District::find()->orderBy(['id' => 'desc'])->limit(2)->indexBy('id')->all();
-        $combination = array_merge($top3,$end3);
+        $combination = array_merge($top3, $end3);
         // $combination = $top3 + $end3;
         var_dump($combination);
     }
@@ -90,7 +91,7 @@ class TestController extends BaseController
 
         // get redis lock
         $is_lock = $oRedisLock->lock($key, 10);
-        if($is_lock){
+        if ($is_lock) {
             // get lock success
             // do something here
             // unlock
@@ -116,8 +117,21 @@ class TestController extends BaseController
      */
     public function actionSentry()
     {
-        Sentry\init(['dsn' => 'http://0558f208d2c44cc8ad22c4b342e7f422@sentry.yuzhua-dev.com/3' ]);
+        Sentry\init(['dsn' => 'http://0558f208d2c44cc8ad22c4b342e7f422@sentry.yuzhua-dev.com/3']);
         throw new \Exception("yii2 framework error to sentry!");
+    }
+
+    /**
+     * 字段自增
+     * @return bool
+     */
+    public function actionIncr()
+    {
+        $request = Yii::$app->getRequest();
+        $id = $request->get('id', 1); // TODO fixed id for testing
+
+        $post = User::findOne($id);
+        return $post->updateCounters(['age' => 3]); // UPDATE `user` SET `age`=`age`+3 WHERE `id`=1
     }
 
 }
