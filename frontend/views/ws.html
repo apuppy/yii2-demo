@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WS client</title>
+</head>
+<body>
+<script>
+    // Create WebSocket connection.
+    const ws_addr = 'ws://127.0.0.1:2346';
+    const ws = new WebSocket(ws_addr);
+
+    // Connection opened
+    ws.addEventListener('open', function (event) {
+        let msg = build_message('Hello Server!');
+        ws.send(msg);
+    });
+
+    // Listen for messages
+    ws.addEventListener('message', function (event) {
+        console.log('Message from server ', event.data);
+    });
+
+    setTimeout(function () {
+        let msg = build_message('setTimeout hello greeting.');
+        ws.send(msg);
+    }, 3000);
+
+    setInterval(function () {
+        let msg = build_message('setInterval hello greeting.');
+        ws.send(msg);
+    }, 3000);
+
+    function build_message(message) {
+        let data = {
+            cmd: "greeting",
+            text: message,
+            client_id: 1000,
+            timestamp: Date.now()
+        };
+        return JSON.stringify(data);
+    }
+
+</script>
+</body>
+</html>
