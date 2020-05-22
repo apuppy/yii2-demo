@@ -11,9 +11,20 @@ use common\DB\Demo\User;
 use Elasticsearch\ClientBuilder;
 use Sentry;
 use Yii;
+use yii\helpers\VarDumper;
 
 class TestController extends BaseController
 {
+
+    const EVENT_TEST_DEMO = 'eventTestDemo';
+
+    public function init()
+    {
+        parent::init();
+        $event_data = ['name' => 'pan pan', 'sex' => 'male', 'age' => '16'];
+        $this->on(self::EVENT_TEST_DEMO, [$this, 'event_handler'], $event_data);
+    }
+
     public function actionIndex()
     {
         $mobile = '13501607059';
@@ -132,6 +143,19 @@ class TestController extends BaseController
 
         $post = User::findOne($id);
         return $post->updateCounters(['age' => 3]); // UPDATE `user` SET `age`=`age`+3 WHERE `id`=1
+    }
+
+    public function actionEvent()
+    {
+        // trigger event , called at \frontend\controllers\TestController::init
+        $this->trigger(self::EVENT_TEST_DEMO);
+    }
+
+    public function event_handler($event)
+    {
+        $request = Yii::$app->getRequest();
+        VarDumper::dump($request->get());
+        VarDumper::dump($event->data);
     }
 
 }

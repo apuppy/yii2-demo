@@ -20,7 +20,7 @@ class m180326_111011_create_user_table extends Migration
             'name' => $this->string(16)->notNull()->defaultValue('')->comment('姓名'),
             'sex' => $this->smallInteger(1)->unsigned()->notNull()->defaultValue(0)->comment('性别 0:未知 1：男 2：女'),
             'age' => $this->smallInteger(3)->unsigned()->notNull()->defaultValue(0)->comment('年龄'),
-            'birthday' => $this->date()->notNull()->defaultValue('0000-00-00')->comment('生日'),
+            'birthday' => $this->date()->comment('生日'),
             'tel' => $this->char(15)->notNull()->defaultValue('')->comment('电话号码'),
             'created_at' => 'DATETIME NOT NULL DEFAULT current_timestamp()',
             'updated_at' => 'DATETIME NOT NULL DEFAULT current_timestamp()'
