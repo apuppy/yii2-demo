@@ -9,6 +9,9 @@ return [
         'helper' => [
             'class' => 'common\components\Helper'
         ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+        ],
         // 测试log target为rabbitmq-server的场景
         /*'log' => [
             'targets' => [

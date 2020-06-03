@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use Yii;
 use yii\base\InvalidParamException;
+use yii\helpers\VarDumper;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -210,4 +211,19 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    /**
+     * yii route path print
+     */
+    public function actionRouteDemo()
+    {
+        echo  "route-demo print yii module、controller、action <br>\n";
+        $mca =  [
+            'module' => $this->module->id,
+            'controller' => Yii::$app->controller->id,
+            'action' => Yii::$app->controller->action->id
+        ];
+        Vardumper::dump($mca);
+    }
+
 }
