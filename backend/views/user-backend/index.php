@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Create User Backend', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('添加后台用户', ['sign-up'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

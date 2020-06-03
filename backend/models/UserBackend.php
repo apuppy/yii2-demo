@@ -123,4 +123,25 @@ class UserBackend extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return $this->getAuthKey() === $authKey;
     }
+
+    /**
+     * 为model的password_hash字段生成密码的hash值
+     *
+     * @param string $password
+     * @throws \yii\base\Exception
+     */
+    public function setPassword($password)
+    {
+        $this->password_hash = Yii::$app->security->generatePasswordHash($password);
+    }
+
+
+    /**
+     * 生成 "remember me" 认证key
+     * @throws \yii\base\Exception
+     */
+    public function generateAuthKey()
+    {
+        $this->auth_key = Yii::$app->security->generateRandomString();
+    }
 }

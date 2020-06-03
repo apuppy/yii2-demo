@@ -112,6 +112,8 @@ class AppActiveRecord extends ActiveRecord
      * 删除一条记录
      * @param $where
      * @return false|int
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
      */
     public function delete_one($where)
     {
