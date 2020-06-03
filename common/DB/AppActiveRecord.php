@@ -1,6 +1,6 @@
 <?php
 
-namespace common;
+namespace common\DB;
 
 use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
