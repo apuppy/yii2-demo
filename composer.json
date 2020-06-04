@@ -27,7 +27,8 @@
         "react/http": "^0.8.6",
         "react/react": "^1.0",
         "workerman/workerman": "^4.0",
-        "dmstr/yii2-adminlte-asset": "^2.6"
+        "dmstr/yii2-adminlte-asset": "^2.6",
+        "mdmsoft/yii2-admin": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
