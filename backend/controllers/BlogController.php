@@ -3,17 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\UserBackend;
-use backend\models\UserBackendSearch;
-use yii\filters\AccessControl;
+use backend\models\Blog;
+use backend\models\BlogSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * UserBackendController implements the CRUD actions for UserBackend model.
+ * BlogController implements the CRUD actions for Blog model.
  */
-class UserBackendController extends Controller
+class BlogController extends Controller
 {
 
     /**
@@ -22,6 +21,10 @@ class UserBackendController extends Controller
     public function behaviors()
     {
         return [
+            //附加行为
+            'as access' => [
+                'class' => 'backend\components\AccessControl',
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -32,12 +35,13 @@ class UserBackendController extends Controller
     }
 
     /**
-     * Lists all UserBackend models.
+     * Lists all Blog models.
      * @return mixed
+     * @throws \yii\web\ForbiddenHttpException
      */
     public function actionIndex()
     {
-        $searchModel = new UserBackendSearch();
+        $searchModel = new BlogSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -47,7 +51,7 @@ class UserBackendController extends Controller
     }
 
     /**
-     * Displays a single UserBackend model.
+     * Displays a single Blog model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -60,13 +64,13 @@ class UserBackendController extends Controller
     }
 
     /**
-     * Creates a new UserBackend model.
+     * Creates a new Blog model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new UserBackend();
+        $model = new Blog();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -78,7 +82,7 @@ class UserBackendController extends Controller
     }
 
     /**
-     * Updates an existing UserBackend model.
+     * Updates an existing Blog model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -98,7 +102,7 @@ class UserBackendController extends Controller
     }
 
     /**
-     * Deletes an existing UserBackend model.
+     * Deletes an existing Blog model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -114,39 +118,15 @@ class UserBackendController extends Controller
     }
 
     /**
-     * @return string|\yii\web\Response
-     * @throws \yii\base\Exception
-     */
-    public function actionSignUp()
-    {
-        // 实例化一个表单模型，这个表单模型我们还没有创建，等一下后面再创建
-        $model = new \backend\models\SignUpForm();
-
-        // 下面这一段if是我们刚刚分析的第二个小问题的实现，下面让我具体的给你描述一下这几个方法的含义吧
-        // $model->load() 方法，实质是把post过来的数据赋值给model的属性
-        // $model->signup() 方法, 是我们要实现的具体的添加用户操作
-        if ($model->load(Yii::$app->request->post()) && $model->signUp()) {
-            // 添加完用户之后，我们跳回到index操作即列表页
-            return $this->redirect(['index']);
-        }
-
-        // 下面这一段是我们刚刚分析的第一个小问题的实现
-        // 渲染添加新用户的表单
-        return $this->render('sign-up', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Finds the UserBackend model based on its primary key value.
+     * Finds the Blog model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return UserBackend the loaded model
+     * @return Blog the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = UserBackend::findOne($id)) !== null) {
+        if (($model = Blog::findOne($id)) !== null) {
             return $model;
         }
 
