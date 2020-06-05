@@ -17,6 +17,25 @@ return [
         'admin' => [
             'class' => 'mdm\admin\Module',
         ],
+
+        // ------ yii2 custom gii template begin ------
+        /*
+        'gii' => [
+            'class' => 'yii\gii\Module',
+            'allowedIPs' => ['127.0.0.1', '::1'],
+            'generators' => [
+                'crud' => [ //生成器名称
+                    'class' => 'yii\gii\generators\crud\Generator',
+                    'templates' => [ //设置我们自己的模板
+                        //模板名 => 模板路径
+                        'CrudDemo' => '@backend/components/gii-custom/crud/default',
+                    ]
+                ]
+            ],
+        ],
+        */
+        // ------ yii2 custom gii template begin ------
+
     ],
     'components' => [
         'request' => [
@@ -75,7 +94,7 @@ return [
         'allowActions' => [
             //这里是允许访问的action，不受权限控制
             //controller/action
-            // '*',
+            'gii/*',
             "site/*"
         ]
     ],

@@ -24,3 +24,17 @@ CREATE TABLE `user_backend` (
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- category
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '栏目ID',
+  `name` varchar(20) NOT NULL DEFAULT '' COMMENT '栏目名',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='栏目表';
+
+-- custom gii demo test
+CREATE TABLE `gii_demo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
