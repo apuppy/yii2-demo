@@ -8,6 +8,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
+    'name' => 'Yii2 Demo',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
@@ -74,7 +75,7 @@ return [
         'allowActions' => [
             //这里是允许访问的action，不受权限控制
             //controller/action
-            //'*'
+            // '*',
             "site/*"
         ]
     ],
