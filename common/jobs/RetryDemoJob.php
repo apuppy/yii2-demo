@@ -8,6 +8,11 @@ use yii\queue\RetryableJobInterface;
 
 class RetryDemoJob extends BaseObject implements RetryableJobInterface
 {
+    // retrable job
+    // https://www.yiiframework.com/extension/yiisoft/yii2-queue/doc/guide/2.0/en/retryable
+    // manage queue use process management tool
+    // https://www.yiiframework.com/extension/yiisoft/yii2-queue/doc/guide/2.0/en/worker#supervisor
+
     public $url;
     public $file;
 

@@ -40,7 +40,7 @@ class ErrorLogSearch extends ErrorLog
      */
     public function search($params)
     {
-        $query = ErrorLog::find();
+        $query = ErrorLog::find()->orderBy('id DESC');
 
         // add conditions that should always apply here
 
