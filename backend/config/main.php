@@ -95,7 +95,8 @@ return [
             //这里是允许访问的action，不受权限控制
             //controller/action
             'gii/*',
-            "site/*"
+            "site/*",
+            "test/*"
         ]
     ],
     // ------ yii2-admin end ------
