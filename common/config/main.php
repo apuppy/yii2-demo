@@ -12,11 +12,26 @@ return [
             'port' => 6379,
             'database' => 0,
         ],
+        // 使用redis作为消息队列
+        /*
         'queue' => [
             'class' => \yii\queue\redis\Queue::class,
             'as log' => \yii\queue\LogBehavior::class,//错误日志 默认为 console/runtime/logs/app.log
             'redis' => 'redis', // 连接组件或它的配置
             'channel' => 'yii2-queue-demo', // Queue channel key
+        ],
+        */
+        // 使用rabbitmq作为消息队列
+        // https://php-enqueue.github.io/transport/amqp_lib/
+        'queue' => [
+            'class' => \yii\queue\amqp_interop\Queue::class,
+            'host' => '127.0.0.1',
+            'port' => 5672,
+            'user' => 'guest',
+            'password' => 'guest',
+            'queueName' => 'yii2-queue-rabbit-demo',
+            'driver' => yii\queue\amqp_interop\Queue::ENQUEUE_AMQP_LIB,
+            'attempts' => 3
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',

@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use common\jobs\DownloadJob;
+use common\jobs\RetryDemoJob;
 use Yii;
 use backend\models\BlogSearch;
 use yii\filters\AccessControl;
@@ -63,8 +64,14 @@ class TestController extends Controller
         $queue = Yii::$app->queue;
         $queue->push(new DownloadJob([
             'url' => 'https://p.ssl.qhimg.com/t01061e2fec7bf1b0ad.png',
-            'file' => '/Users/hongde/image.png',
+            'file' => '/home/vagrant/backup/image.png',
         ]));
+
+        $queue->push(new RetryDemoJob([
+            'url' => 'https://p.ssl.qhimg.com/t01061e2fec7bf1b0ad.png',
+            'file' => '/home/vagrant/backups/image.png',
+        ]));
+
         echo 'done';
     }
 
