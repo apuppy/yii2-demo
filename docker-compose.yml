@@ -20,6 +20,10 @@ services:
       - "$PWD/lnmp/php/conf/addition-php.ini:/usr/local/etc/php/conf.d/addition-php.ini"
       - ${COMPOSER_CACHE_DIR}:/tmp/composer
     working_dir: "/var/www/html/yii2-demo"
+    environment:
+      - http_proxy=${http_proxy}
+      - https_proxy=${https_proxy}
+      - no_proxy=${no_proxy}
   mysql:
     image: mysql:5.7
     container_name: mysql
