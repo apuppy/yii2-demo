@@ -38,3 +38,6 @@ phpunit.phar
 swoole/*.log
 swoole/*.png
 swoole/*.jpg
+
+# lnmp docker-compose ignore
+lnmp/nginx/log/

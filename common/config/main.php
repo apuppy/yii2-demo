@@ -6,6 +6,13 @@ return [
         'queue', // The component registers own console commands
     ],
     'components' => [
+        'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=127.0.0.1;dbname=yii2demo',
+            'username' => 'root',
+            'password' => '123456',
+            'charset' => 'utf8mb4',
+        ],
         'redis' => [
             'class' => 'yii\redis\Connection',
             'hostname' => 'localhost',

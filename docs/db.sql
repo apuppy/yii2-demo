@@ -43,7 +43,7 @@ CREATE TABLE `gii_demo` (
 create table error_log(
     id int(11) primary key auto_increment,
     module varchar(20) not null default '' comment 'application module',
-    level varchar(10) not null default '' comment 'error or exeception level',
+    level varchar(10) not null default '' comment 'error or exception level',
     code int(11) unsigned not null default 0 comment 'error code',
     message varchar(300) not null default '' comment 'error message',
     file varchar(100) not null default '' comment 'related code file',

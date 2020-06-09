@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  nginx:
+    image: nginx:1.18
+    container_name: nginx
+    volumes:
+      - "$PWD:/var/www/html/yii2-demo"
+      - "$PWD/lnmp/nginx/conf/yii2demo.conf:/etc/nginx/conf.d/yii2demo.conf"
+      - "$PWD/lnmp/nginx/log/:/var/log/nginx/"
+    ports:
+      - "8080:80"
+      - "8090:8090"
+      - "443:443"
+  php:
+    container_name: php
+    build: ./lnmp/php
+    volumes:
+      - "$PWD:/var/www/html/yii2-demo"
+      - "$PWD/lnmp/php/conf/addition-php.ini:/usr/local/etc/php/conf.d/addition-php.ini"
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    volumes:
+      - "${MYSQL_DATA_DIR}:/var/lib/mysql"
+      - "$PWD/lnmp/mysql/conf/addition-my.cnf:/etc/mysql/conf.d/addition-my.cnf"
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
