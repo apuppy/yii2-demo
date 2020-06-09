@@ -18,11 +18,13 @@ services:
     volumes:
       - "$PWD:/var/www/html/yii2-demo"
       - "$PWD/lnmp/php/conf/addition-php.ini:/usr/local/etc/php/conf.d/addition-php.ini"
+      - ${COMPOSER_CACHE_DIR}:/tmp/composer
+    working_dir: "/var/www/html/yii2-demo"
   mysql:
     image: mysql:5.7
     container_name: mysql
     volumes:
       - "${MYSQL_DATA_DIR}:/var/lib/mysql"
-      - "$PWD/lnmp/mysql/conf/addition-my.cnf:/etc/mysql/conf.d/addition-my.cnf"
+#      - "$PWD/lnmp/mysql/conf/addition-my.cnf:/etc/mysql/conf.d/addition-my.cnf"
     environment:
       MYSQL_ROOT_PASSWORD: 123456
