@@ -13,6 +13,13 @@ return [
             'password' => '123456',
             'charset' => 'utf8mb4',
         ],
+        'search_engine_db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=127.0.0.1;port=3306;dbname=search_engine',
+            'username' => 'root',
+            'password' => '123456',
+            'charset' => 'utf8mb4',
+        ],
         'redis' => [
             'class' => 'yii\redis\Connection',
             'hostname' => 'localhost',
