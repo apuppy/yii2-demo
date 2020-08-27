@@ -35,7 +35,7 @@ class RabbitQueueController extends Controller
         $messageBody = date('Y-m-d H:i:s');
         $message = new AMQPMessage($messageBody, array('content_type' => 'text/plain', 'delivery_mode' => AMQPMessage::DELIVERY_MODE_PERSISTENT));
         $channel->basic_publish($message, $this->exchange);
-        $this->stdout('published message : '.$messageBody.' .', Console::FG_YELLOW);
+        $this->stdout('published message : ' . $messageBody . ' .', Console::FG_YELLOW);
     }
 
     public function actionConsume()
