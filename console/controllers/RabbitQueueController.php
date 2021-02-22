@@ -19,7 +19,7 @@ class RabbitQueueController extends Controller
     public function init()
     {
         parent::init();
-        $this->rabbit_conf = Yii::$app->params['rabbitmq'];
+        $this->rabbit_conf = Yii::$app->params['rabbitmq'] ?? null;
     }
 
     public function actionProduce()
