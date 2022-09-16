@@ -24,7 +24,7 @@
         "ext-json": "*",
         "sentry/sdk": "2.1.0",
         "elasticsearch/elasticsearch": "^7.6",
-        "react/http": "^0.8.6",
+        "react/http": "^1.7.0",
         "react/react": "^1.0",
         "workerman/workerman": "^4.0",
         "dmstr/yii2-adminlte-asset": "^2.6",
